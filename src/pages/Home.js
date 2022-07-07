@@ -9,21 +9,20 @@ class Home extends React.Component {
     this.state = {
       productName: '',
       products: [],
-      loading: false,
-      notFind: 'Digite algum termo de pesquisa ou escolha uma categoria.'
-    }
+      notFind: 'Digite algum termo de pesquisa ou escolha uma categoria.',
+    };
   }
 
   handleChange = ({ target: { value, name } }) => {
     this.setState({
-      [name] : value,
+      [name]: value,
     });
   }
 
   handleClick = async () => {
     const { productName } = this.state;
     const getProducts = await getProductsFromCategoryAndQuery('', productName);
-    if(getProducts.results.length === 0) {
+    if (getProducts.results.length === 0) {
       this.setState({
         notFind: 'Nenhum produto foi encontrado',
       });
@@ -35,7 +34,6 @@ class Home extends React.Component {
     console.log(getProducts.results);
   }
 
-
   render() {
     const {
       productName,
@@ -45,10 +43,29 @@ class Home extends React.Component {
 
     return (
       <div data-testid="home-initial-message">
-        <input type="text" data-testid="query-input" name="productName" value={ productName } onChange={ this.handleChange } />
-        <button type="button" data-testid="query-button" onClick= { this.handleClick }>Pesquisar</button>
+        <input
+          type="text"
+          data-testid="query-input"
+          name="productName"
+          value={ productName }
+          onChange={ this.handleChange }
+        />
+        <button
+          type="button"
+          data-testid="query-button"
+          onClick={ this.handleClick }
+        >
+          Pesquisar
+        </button>
         { notFind }
-        { products.map(({ price, title, thumbnail }, index) => <ProductCard image={ thumbnail } title={ title } price={ price } key={ index } />)}
+        { products.map(({ price, title, thumbnail }, index) => (
+          <ProductCard
+            image={ thumbnail }
+            title={ title }
+            price={ price }
+            key={ index }
+          />
+        ))}
       </div>
     );
   }

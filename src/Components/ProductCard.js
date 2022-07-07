@@ -6,7 +6,7 @@ class ProductCard extends React.Component {
     const {
       image,
       title,
-      price
+      price,
     } = this.props;
 
     return (
