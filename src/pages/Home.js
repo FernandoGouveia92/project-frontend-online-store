@@ -1,6 +1,7 @@
 import React from 'react';
 import ProductCard from '../Components/ProductCard';
 import { getProductsFromCategoryAndQuery } from '../services/api';
+import { Link } from 'react-router-dom';
 
 class Home extends React.Component {
   constructor() {
@@ -66,6 +67,14 @@ class Home extends React.Component {
             key={ index }
           />
         ))}
+        <Link
+          to="/ShoppingCart"
+          type="button"
+          data-testid="shopping-cart-button"
+        >
+          Meu Carrinho
+        </Link>
+        Digite algum termo de pesquisa ou escolha uma categoria.
       </div>
     );
   }
