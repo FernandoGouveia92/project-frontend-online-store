@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 class ShoppingCart extends React.Component {
   render() {
+    // passou
     const { productsMyCart } = this.props;
     const product = (
       productsMyCart.map(({ price, title, thumbnail }, index) => (
