@@ -87,7 +87,9 @@ class Home extends React.Component {
         </div>
         <section className="principal">
           <aside>
-            <Categories />
+            <Categories
+              handleChange={ this.handleChange }
+            />
           </aside>
           <article>
             { products.map(({ price, title, thumbnail }, index) => (
