@@ -5,15 +5,24 @@ class ShoppingCart extends React.Component {
   render() {
     // passou
     const { productsMyCart } = this.props;
+    const array1 = new Set();
+    const filterProduct = productsMyCart.filter((e) => {
+      const duplicado = array1.has(e.title);
+      array1.add(e.title);
+      return !duplicado;
+    });
     const product = (
-      productsMyCart.map(({ price, title, thumbnail }, index) => (
-        <div key={ index }>
-          <img src={ thumbnail } alt={ title } />
-          <p data-testid="shopping-cart-product-name">{ title }</p>
-          <p>{ price }</p>
-          <p data-testid="shopping-cart-product-quantity">{ productsMyCart.length }</p>
-        </div>
-      ))
+      filterProduct.map(({ price, title, thumbnail }, index) => {
+        const produtosIguais = productsMyCart.filter((el) => el.title === title);
+        return (
+          <div key={ index }>
+            <img src={ thumbnail } alt={ title } />
+            <p data-testid="shopping-cart-product-name">{ title }</p>
+            <p>{ price }</p>
+            <p data-testid="shopping-cart-product-quantity">{ produtosIguais.length }</p>
+          </div>
+        );
+      })
     );
     const vazio = (
       <h3

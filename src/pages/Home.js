@@ -44,7 +44,6 @@ class Home extends React.Component {
         products: getProducts.results,
       });
     }
-    console.log(getProducts.results);
   }
 
   render() {
