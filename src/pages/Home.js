@@ -94,11 +94,12 @@ class Home extends React.Component {
             />
           </aside>
           <article>
-            { products.map(({ price, title, thumbnail }, index) => (
+            { products.map(({ price, title, thumbnail, id }, index) => (
               <ProductCard
                 image={ thumbnail }
                 title={ title }
                 price={ price }
+                id={ id }
                 key={ index }
                 addToCart={ () => addToCart(price, title, thumbnail) }
               />

@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+// Linha
 
 class ProductCard extends React.Component {
   render() {
@@ -8,6 +10,7 @@ class ProductCard extends React.Component {
       title,
       price,
       addToCart,
+      id,
     } = this.props;
 
     return (
@@ -22,6 +25,12 @@ class ProductCard extends React.Component {
         >
           Adiciona ao Carrinho
         </button>
+        <Link
+          to={ `/product/${id}` }
+          data-testid="product-detail-link"
+        >
+          Página do produto
+        </Link>
       </div>
     );
   }
@@ -32,6 +41,7 @@ ProductCard.propTypes = {
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   addToCart: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default ProductCard;
