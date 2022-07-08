@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartShopping, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import ProductCard from '../Components/ProductCard';
 import Categories from './Categories';
 import { getProductsFromCategoryAndQuery } from '../services/api';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartShopping, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 class Home extends React.Component {
   constructor() {
@@ -72,7 +72,7 @@ class Home extends React.Component {
             to="/ShoppingCart"
             type="button"
             data-testid="shopping-cart-button"
-            >
+          >
             <FontAwesomeIcon icon={ faCartShopping } />
             <strong>Meu Carrinho</strong>
           </Link>
