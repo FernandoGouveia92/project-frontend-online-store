@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import ProductCard from '../Components/ProductCard';
 import Categories from './Categories';
 import { getProductsFromCategoryAndQuery } from '../services/api';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartShopping, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 class Home extends React.Component {
   constructor() {
@@ -59,34 +61,37 @@ class Home extends React.Component {
               data-testid="query-button"
               onClick={ this.handleClick }
             >
-              Pesquisar
+              <FontAwesomeIcon icon={ faMagnifyingGlass } />
             </button>
+            <p>
+              { notFind }
+            </p>
           </div>
-          <p>
-            { notFind }
-          </p>
           <Link
             className="css-shoppingcart"
             to="/ShoppingCart"
             type="button"
             data-testid="shopping-cart-button"
-          >
-            Meu Carrinho
+            >
+            <FontAwesomeIcon icon={ faCartShopping } />
+            <strong>Meu Carrinho</strong>
           </Link>
         </div>
-        <aside>
-          <Categories />
-        </aside>
-        <article>
-          { products.map(({ price, title, thumbnail }, index) => (
-            <ProductCard
-              image={ thumbnail }
-              title={ title }
-              price={ price }
-              key={ index }
-            />
-          ))}
-        </article>
+        <section className="principal">
+          <aside>
+            <Categories />
+          </aside>
+          <article>
+            { products.map(({ price, title, thumbnail }, index) => (
+              <ProductCard
+                image={ thumbnail }
+                title={ title }
+                price={ price }
+                key={ index }
+              />
+            ))}
+          </article>
+        </section>
       </div>
     );
   }

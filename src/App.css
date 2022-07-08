@@ -1,8 +1,11 @@
 .css-input-container {
   align-items: baseline;
+  background-color: #4fb885;
   display: flex;
-  justify-content: center;
-  padding: 5px;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  min-height: 75px;
+  padding: 10px;
 }
 
 .css-input-search {
@@ -10,27 +13,80 @@
 }
 
 .css-input-search input {
+  padding: 3px;
   width: 400px;
 }
 
+aside button {
+  background-color: #347857;
+  border: 1px solid black;
+  color: black;
+  font-size: 16px;
+  font-weight: 900;
+  padding: 5px;
+  width: 100%;
+}
+
 .css-input-search button {
+  background-color: #347857;
+  border: 1px solid rgb(89, 89, 89);
+  border-radius: 3px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-left: 5px;
+  padding: 4px;
+  width: 60px;
+}
+
+.css-categories button {
+  text-align: left;
   width: 200px;
 }
 
+aside button:hover {
+  background-color: #183829;
+  color: white;
+}
+
+.css-input-search button:hover {
+  background-color: #183829;
+  color: white;
+}
+
+.css-input-search p {
+  text-align: center;
+}
+
 .css-shoppingcart {
+  color: #347857;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2rem;
   margin-left: 10px;
+  padding: 5px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.css-shoppingcart:hover {
+  color: white;
+}
+
+.principal {
+  display: flex;
 }
 
 aside {
-  margin-top: 20px;
-  position: fixed;
+  background-color: #4fb885;
+  padding: 10px;
+  width: 220px;
 }
 
 article {
   display: flex;
   flex-wrap: wrap;
-  margin-left: 205px;
-  margin-top: 20px;
+  justify-content: space-evenly;
+  margin: 20px;
 }
 
 .css-product-card {
@@ -46,7 +102,7 @@ article {
 }
 
 .css-product-card img {
-  width: 100px;
+  width: 125px;
 }
 
 .css-categories {
@@ -57,9 +113,4 @@ article {
 
 .css-categories li {
   margin-bottom: 1.5px;
-}
-
-.css-categories button {
-  text-align: left;
-  width: 200px;
 }
