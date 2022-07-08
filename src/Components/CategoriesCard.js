@@ -7,7 +7,9 @@ class CategoriesCard extends React.Component {
 
     return (
       <label htmlFor={ id } data-testid="category">
-        <button type="button">{ nomeCategoria }</button>
+        <li>
+          <button type="button">{ nomeCategoria }</button>
+        </li>
       </label>
     );
   }

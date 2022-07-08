@@ -1,42 +1,116 @@
-.App {
+.css-input-container {
+  align-items: baseline;
+  background-color: #4fb885;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  min-height: 75px;
+  padding: 10px;
+}
+
+.css-input-search {
+  margin-right: 10px;
+}
+
+.css-input-search input {
+  padding: 3px;
+  width: 400px;
+}
+
+aside button {
+  background-color: #347857;
+  border: 1px solid black;
+  color: black;
+  font-size: 16px;
+  font-weight: 900;
+  padding: 5px;
+  width: 100%;
+}
+
+.css-input-search button {
+  background-color: #347857;
+  border: 1px solid rgb(89, 89, 89);
+  border-radius: 3px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-left: 5px;
+  padding: 4px;
+  width: 60px;
+}
+
+.css-categories button {
+  text-align: left;
+  width: 200px;
+}
+
+aside button:hover {
+  background-color: #183829;
+  color: white;
+}
+
+.css-input-search button:hover {
+  background-color: #183829;
+  color: white;
+}
+
+.css-input-search p {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media ( prefers-reduced-motion : no-preference ) {
-
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-
-}
-
-.App-header {
-  align-items: center;
-  background-color: #282c34;
-  color: white;
+.css-shoppingcart {
+  color: #347857;
   display: flex;
   flex-direction: column;
-  font-size: calc(10px + 2vmin);
-  justify-content: center;
-  min-height: 100vh;
+  font-size: 1.2rem;
+  margin-left: 10px;
+  padding: 5px;
+  text-decoration: none;
+  white-space: nowrap;
 }
 
-.App-link {
-  color: #61dafb;
+.css-shoppingcart:hover {
+  color: white;
 }
 
-@keyframes App-logo-spin {
+.principal {
+  display: flex;
+}
 
-  from {
-    transform: rotate(0deg);
-  }
+aside {
+  background-color: #4fb885;
+  padding: 10px;
+  width: 220px;
+}
 
-  to {
-    transform: rotate(360deg);
-  }
+article {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 20px;
+}
+
+.css-product-card {
+  align-items: center;
+  border: 1.5px solid black;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  margin: 2px;
+  text-align: center;
+  width: 250px;
+}
+
+.css-product-card img {
+  width: 125px;
+}
+
+.css-categories {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.css-categories li {
+  margin-bottom: 1.5px;
 }

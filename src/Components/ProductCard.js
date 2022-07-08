@@ -10,7 +10,7 @@ class ProductCard extends React.Component {
     } = this.props;
 
     return (
-      <div data-testid="product">
+      <div className="css-product-card" data-testid="product">
         <img src={ image } alt={ title } />
         <p>{ title }</p>
         <p>{ price }</p>
