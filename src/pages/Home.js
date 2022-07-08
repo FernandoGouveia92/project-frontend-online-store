@@ -10,7 +10,11 @@ class Home extends React.Component {
   constructor() {
     super();
 
+    this.handleClick = this.handleClick.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+
     this.state = {
+      categoryName: '',
       productName: '',
       products: [],
       notFind: 'Digite algum termo de pesquisa ou escolha uma categoria.',
@@ -20,12 +24,16 @@ class Home extends React.Component {
   handleChange = ({ target: { value, name } }) => {
     this.setState({
       [name]: value,
+    }, () => {
+      if (name === 'categoryName') {
+        this.handleClick();
+      }
     });
   }
 
   handleClick = async () => {
-    const { productName } = this.state;
-    const getProducts = await getProductsFromCategoryAndQuery('', productName);
+    const { productName, categoryName } = this.state;
+    const getProducts = await getProductsFromCategoryAndQuery(categoryName, productName);
     if (getProducts.results.length === 0) {
       this.setState({
         notFind: 'Nenhum produto foi encontrado',
@@ -79,7 +87,9 @@ class Home extends React.Component {
         </div>
         <section className="principal">
           <aside>
-            <Categories />
+            <Categories
+              handleChange={ this.handleChange }
+            />
           </aside>
           <article>
             { products.map(({ price, title, thumbnail }, index) => (

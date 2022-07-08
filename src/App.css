@@ -112,5 +112,6 @@ article {
 }
 
 .css-categories li {
+  border-radius: 5px;
   margin-bottom: 1.5px;
 }
