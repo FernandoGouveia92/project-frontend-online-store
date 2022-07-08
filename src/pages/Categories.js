@@ -22,9 +22,8 @@ class Categories extends React.Component {
 
   render() {
     const { array } = this.state;
-
     return (
-      <div>
+      <ul className="css-categories">
         {
           array.map(({ id, name }, index) => (<CategoriesCard
             key={ index }
@@ -32,7 +31,7 @@ class Categories extends React.Component {
             nomeCategoria={ name }
           />))
         }
-      </div>
+      </ul>
     );
   }
 }

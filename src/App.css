@@ -1,42 +1,65 @@
-.App {
-  text-align: center;
+.css-input-container {
+  align-items: baseline;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.css-input-search {
+  margin-right: 10px;
 }
 
-@media ( prefers-reduced-motion : no-preference ) {
-
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-
+.css-input-search input {
+  width: 400px;
 }
 
-.App-header {
+.css-input-search button {
+  width: 200px;
+}
+
+.css-shoppingcart {
+  margin-left: 10px;
+}
+
+aside {
+  margin-top: 20px;
+  position: fixed;
+}
+
+article {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 205px;
+  margin-top: 20px;
+}
+
+.css-product-card {
   align-items: center;
-  background-color: #282c34;
-  color: white;
+  border: 1.5px solid black;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
-  font-size: calc(10px + 2vmin);
-  justify-content: center;
-  min-height: 100vh;
+  height: 250px;
+  margin: 2px;
+  text-align: center;
+  width: 250px;
 }
 
-.App-link {
-  color: #61dafb;
+.css-product-card img {
+  width: 100px;
 }
 
-@keyframes App-logo-spin {
+.css-categories {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
-  from {
-    transform: rotate(0deg);
-  }
+.css-categories li {
+  margin-bottom: 1.5px;
+}
 
-  to {
-    transform: rotate(360deg);
-  }
+.css-categories button {
+  text-align: left;
+  width: 200px;
 }

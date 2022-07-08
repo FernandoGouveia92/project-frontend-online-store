@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ProductCard from '../Components/ProductCard';
+import Categories from './Categories';
 import { getProductsFromCategoryAndQuery } from '../services/api';
 
 class Home extends React.Component {
@@ -43,38 +44,49 @@ class Home extends React.Component {
     } = this.state;
 
     return (
-      <div data-testid="home-initial-message">
-        <input
-          type="text"
-          data-testid="query-input"
-          name="productName"
-          value={ productName }
-          onChange={ this.handleChange }
-        />
-        <button
-          type="button"
-          data-testid="query-button"
-          onClick={ this.handleClick }
-        >
-          Pesquisar
-        </button>
-        { notFind }
-        { products.map(({ price, title, thumbnail }, index) => (
-          <ProductCard
-            image={ thumbnail }
-            title={ title }
-            price={ price }
-            key={ index }
-          />
-        ))}
-        <Link
-          to="/ShoppingCart"
-          type="button"
-          data-testid="shopping-cart-button"
-        >
-          Meu Carrinho
-        </Link>
-        Digite algum termo de pesquisa ou escolha uma categoria.
+      <div>
+        <div data-testid="home-initial-message" className="css-input-container">
+          <div className="css-input-search">
+            <input
+              type="text"
+              data-testid="query-input"
+              name="productName"
+              value={ productName }
+              onChange={ this.handleChange }
+            />
+            <button
+              type="button"
+              data-testid="query-button"
+              onClick={ this.handleClick }
+            >
+              Pesquisar
+            </button>
+          </div>
+          <p>
+            { notFind }
+          </p>
+          <Link
+            className="css-shoppingcart"
+            to="/ShoppingCart"
+            type="button"
+            data-testid="shopping-cart-button"
+          >
+            Meu Carrinho
+          </Link>
+        </div>
+        <aside>
+          <Categories />
+        </aside>
+        <article>
+          { products.map(({ price, title, thumbnail }, index) => (
+            <ProductCard
+              image={ thumbnail }
+              title={ title }
+              price={ price }
+              key={ index }
+            />
+          ))}
+        </article>
       </div>
     );
   }
