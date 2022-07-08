@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import ProductCard from '../Components/ProductCard';
@@ -52,6 +53,7 @@ class Home extends React.Component {
       notFind,
       products,
     } = this.state;
+    const { addToCart } = this.props;
 
     return (
       <div>
@@ -98,6 +100,7 @@ class Home extends React.Component {
                 title={ title }
                 price={ price }
                 key={ index }
+                addToCart={ () => addToCart(price, title, thumbnail) }
               />
             ))}
           </article>
@@ -106,5 +109,9 @@ class Home extends React.Component {
     );
   }
 }
+
+Home.propTypes = {
+  addToCart: PropTypes.func.isRequired,
+};
 
 export default Home;

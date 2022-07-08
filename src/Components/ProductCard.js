@@ -7,6 +7,7 @@ class ProductCard extends React.Component {
       image,
       title,
       price,
+      addToCart,
     } = this.props;
 
     return (
@@ -14,6 +15,13 @@ class ProductCard extends React.Component {
         <img src={ image } alt={ title } />
         <p>{ title }</p>
         <p>{ price }</p>
+        <button
+          type="button"
+          onClick={ addToCart }
+          data-testid="product-add-to-cart"
+        >
+          Adiciona ao Carrinho
+        </button>
       </div>
     );
   }
@@ -23,6 +31,7 @@ ProductCard.propTypes = {
   image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
+  addToCart: PropTypes.func.isRequired,
 };
 
 export default ProductCard;
