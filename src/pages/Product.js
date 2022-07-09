@@ -15,6 +15,7 @@ class Product extends React.Component {
       email: '',
       rating: '1',
       comment: '',
+      productName: '',
       reviews: [],
     };
   }
@@ -138,7 +139,7 @@ class Product extends React.Component {
             </button> 
           </form>
             {
-              reviews.map(({ email, comment, rating }, index) => <Review key={ `${email}-${index}` } email={ email } comment={ comment } rating={ rating } />
+              reviews/* .filter(({  })) */.map(({ email, comment, rating }, index) => <Review key={ `${email}-${index}` } email={ email } comment={ comment } rating={ rating } />
               )
             }
         </section>
