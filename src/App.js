@@ -14,6 +14,27 @@ class App extends React.Component {
     };
   }
 
+  addOrRemoveItem = (name, titleInfo) => {
+    const { productsMyCart } = this.state;
+    if (name === 'less') {
+      const indexOfProduct = productsMyCart
+        .reverse()
+        .findIndex(({ title }) => title === titleInfo);
+      const newProducts = productsMyCart
+        .filter((ele, index) => index !== indexOfProduct)
+        .reverse();
+      this.setState({
+        productsMyCart: newProducts,
+      });
+    } else {
+      const findProduct = productsMyCart
+        .find(({ title }) => title === titleInfo);
+      this.setState((prev) => ({
+        productsMyCart: [...prev.productsMyCart, findProduct],
+      }));
+    }
+  }
+
   addToCart(price, title, thumbnail) {
     const data = {
       price,
@@ -43,7 +64,12 @@ class App extends React.Component {
           />
           <Route
             path="/shoppingcart"
-            render={ () => <ShoppingCart productsMyCart={ productsMyCart } /> }
+            render={ () => (
+              <ShoppingCart
+                productsMyCart={ productsMyCart }
+                changeQuantity={ this.addOrRemoveItem }
+              />
+            ) }
           />
           <Route
             path="/product/:id"
