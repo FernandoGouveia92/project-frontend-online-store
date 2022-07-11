@@ -57,10 +57,10 @@ class App extends React.Component {
 
   addToCart(quantity, price, title, thumbnail) {
     const data = {
+      quantity,
       price,
       title,
       thumbnail,
-      quantity,
     };
     this.setState((prevState) => ({
       productsMyCart: [...prevState.productsMyCart, data],
@@ -103,7 +103,7 @@ class App extends React.Component {
                 (price,
                   quantity,
                   title,
-                  thumbnail) => this.addToCart(quantity, price, title, thumbnail)
+                  thumbnail) => this.addToCart(price, thumbnail, title, quantity)
               }
               { ...props }
               amount={ productsMyCart.length }
