@@ -30,7 +30,7 @@ class App extends React.Component {
     const { productsMyCart } = this.state;
     localStorage.setItem('products', JSON.stringify(productsMyCart));
   }
-  
+
   addOrRemoveItem = (name, titleInfo, minQuant, maxQuant) => {
     const { productsMyCart } = this.state;
     if (name === 'less') {
@@ -84,7 +84,7 @@ class App extends React.Component {
                     title,
                     thumbnail) => this.addToCart(quantity, price, title, thumbnail)
                 }
-                quantity={ productsMyCart.length }
+                amount={ productsMyCart.length }
               />) }
           />
           <Route
@@ -106,7 +106,7 @@ class App extends React.Component {
                   thumbnail) => this.addToCart(quantity, price, title, thumbnail)
               }
               { ...props }
-              quantity={ productsMyCart.length }
+              amount={ productsMyCart.length }
             />) }
           />
           <Route

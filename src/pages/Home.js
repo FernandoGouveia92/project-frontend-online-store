@@ -49,7 +49,7 @@ class Home extends React.Component {
       notFind,
       products,
     } = this.state;
-    const { addToCart, quantity } = this.props;
+    const { addToCart, amount } = this.props;
 
     return (
       <div>
@@ -84,7 +84,7 @@ class Home extends React.Component {
           >
             <FontAwesomeIcon icon={ faCartShopping } />
             <strong>Meu Carrinho</strong>
-            <strong data-testid="shopping-cart-size">{ quantity }</strong>
+            <strong data-testid="shopping-cart-size">{ amount }</strong>
           </Link>
         </div>
         <section className="principal">
@@ -119,7 +119,7 @@ class Home extends React.Component {
 
 Home.propTypes = {
   addToCart: PropTypes.func.isRequired,
-  quantity: PropTypes.number.isRequired,
+  amount: PropTypes.number.isRequired,
 };
 
 export default Home;
