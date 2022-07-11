@@ -15,24 +15,31 @@ class Product extends React.Component {
       email: '',
       rating: '1',
       comment: '',
-      productName: '',
+      productId: '',
       reviews: [],
     };
   }
 
   componentDidMount() {
+    const { match: { params: { id } } } = this.props;
     this.getProduct();
     const savedReviews = JSON.parse(localStorage.getItem('reviews'));
     if (!savedReviews) {
       this.setState({
-        reviews: []
-      })
+        reviews: [],
+        productId: id,
+      });
     } else {
       this.setState({
         reviews: savedReviews,
-      })
+        productId: id,
+      });
     }
-    
+  }
+
+  componentDidUpdate() {
+    const { reviews } = this.state;
+    localStorage.setItem('reviews', JSON.stringify(reviews));
   }
 
   getProduct = async () => {
@@ -46,15 +53,16 @@ class Product extends React.Component {
   handleChange = ({ target: { name, value } }) => {
     this.setState({
       [name]: value,
-    })
+    });
   }
 
   createReview = () => {
-    const { email, rating, comment } = this.state;
+    const { email, rating, comment, productId } = this.state;
     const productRev = {
       email,
       rating,
       comment,
+      productId,
     };
 
     this.setState((prev) => ({
@@ -65,15 +73,9 @@ class Product extends React.Component {
     }));
   }
 
-  componentDidUpdate() {
-    const { reviews } = this.state;
-    localStorage.setItem('reviews', JSON.stringify(reviews));
-  }
-
   render() {
-    const { productInfo, email, comment, reviews } = this.state;
-    const { title, price, thumbnail } = productInfo;
-    const { addToCart } = this.props;
+    const { productInfo: proIn, email, comment, reviews, productId } = this.state;
+    const { addToCart, match: { params: { id } } } = this.props;
 
     return (
       <div data-testid="product">
@@ -87,14 +89,14 @@ class Product extends React.Component {
           <strong>Meu Carrinho</strong>
         </Link>
         <section>
-          <h2 data-testid="product-detail-name">{ title }</h2>
-          <h2>{ price }</h2>
+          <h2 data-testid="product-detail-name">{ proIn.title }</h2>
+          <h2>{ proIn.price }</h2>
         </section>
-        <img src={ thumbnail } alt={ title } />
+        <img src={ proIn.thumbnail } alt={ proIn.title } />
         <div>
           <button
             type="button"
-            onClick={ () => addToCart(price, title, thumbnail) }
+            onClick={ () => addToCart(proIn.price, proIn.title, proIn.thumbnail) }
             data-testid="product-detail-add-to-cart"
           >
             Adiciona ao Carrinho
@@ -102,7 +104,7 @@ class Product extends React.Component {
         </div>
         <section>
           <form>
-            <label htmlFor='email'>
+            <label htmlFor="email">
               Email:
               <input
                 type="email"
@@ -114,50 +116,46 @@ class Product extends React.Component {
               />
             </label>
             <select onChange={ this.handleChange } name="rating">
-              <option value={ '1' } data-testid={ '1-rating' }>1</option>
-              <option value={ '2' } data-testid={ '2-rating' }>2</option>
-              <option value={ '3' } data-testid={ '3-rating' }>3</option>
-              <option value={ '4' } data-testid={ '4-rating' }>4</option>
-              <option value={ '5' } data-testid={ '5-rating' }>5</option>
+              <option value="1" data-testid="1-rating">1</option>
+              <option value="2" data-testid="2-rating">2</option>
+              <option value="3" data-testid="3-rating">3</option>
+              <option value="4" data-testid="4-rating">4</option>
+              <option value="5" data-testid="5-rating">5</option>
             </select>
-            <label>
-              <textarea
-                value={ comment }
-                name="comment"
-                row="30"
-                collumns="30"
-                data-testid="product-detail-evaluation"
-                onChange={ this.handleChange }
-              />
-            </label>
+            <textarea
+              placeholder="Escreva o que achou do produto aqui!"
+              value={ comment }
+              name="comment"
+              row="30"
+              collumns="30"
+              data-testid="product-detail-evaluation"
+              onChange={ this.handleChange }
+            />
             <button
               type="button"
-              onClick={ this.createReview }
+              onClick={ () => this.createReview(productId) }
               data-testid="submit-review-btn"
             >
               botão
-            </button> 
+            </button>
           </form>
-            {
-              reviews/* .filter(({  })) */.map(({ email, comment, rating }, index) => <Review key={ `${email}-${index}` } email={ email } comment={ comment } rating={ rating } />
-              )
-            }
+          {
+            reviews
+              .filter(({ productId: getId }) => getId === id)
+              .map(({ email: em, comment: com, rating: rat }, index) => (
+                <Review
+                  key={ `${em}-${index}` }
+                  email={ em }
+                  comment={ com }
+                  rating={ rat }
+                />
+              ))
+          }
         </section>
       </div>
     );
   }
 }
-
-/* {
-              [1, 2, 3, 4, 5].map((rating) => (
-                <option value={ rating } data-testid={ `${rating}-rating` } name="rating" onChange={ this.handleChange }>{ rating }</option>
-              ))
-            } */
-
-/* <label htmlFor={ rating } >
-  { rating }
-  <input type="radio" name="rating" value={ rating } id={ rating } data-testid={ `` } />
-</label> */
 
 Product.propTypes = {
   match: PropTypes.shape({

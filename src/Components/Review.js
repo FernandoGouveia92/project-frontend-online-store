@@ -18,6 +18,6 @@ Review.propTypes = {
   email: PropTypes.string.isRequired,
   comment: PropTypes.string.isRequired,
   rating: PropTypes.string.isRequired,
-}
+};
 
 export default Review;

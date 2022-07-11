@@ -14,18 +14,20 @@ class App extends React.Component {
     };
   }
 
-  addOrRemoveItem = (name, titleInfo) => {
+  addOrRemoveItem = (name, titleInfo, minQuant) => {
     const { productsMyCart } = this.state;
     if (name === 'less') {
-      const indexOfProduct = productsMyCart
-        .reverse()
-        .findIndex(({ title }) => title === titleInfo);
-      const newProducts = productsMyCart
-        .filter((ele, index) => index !== indexOfProduct)
-        .reverse();
-      this.setState({
-        productsMyCart: newProducts,
-      });
+      if (minQuant !== 1) {
+        const indexOfProduct = productsMyCart
+          .reverse()
+          .findIndex(({ title }) => title === titleInfo);
+        const newProducts = productsMyCart
+          .filter((ele, index) => index !== indexOfProduct)
+          .reverse();
+        this.setState({
+          productsMyCart: newProducts,
+        });
+      }
     } else {
       const findProduct = productsMyCart
         .find(({ title }) => title === titleInfo);
