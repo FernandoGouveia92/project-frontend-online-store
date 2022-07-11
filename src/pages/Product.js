@@ -75,7 +75,7 @@ class Product extends React.Component {
 
   render() {
     const { productInfo: proIn, email, comment, reviews, productId } = this.state;
-    const { addToCart, match: { params: { id } } } = this.props;
+    const { addToCart, match: { params: { id } }, amount } = this.props;
 
     return (
       <div data-testid="product">
@@ -87,6 +87,7 @@ class Product extends React.Component {
         >
           <FontAwesomeIcon icon={ faCartShopping } />
           <strong>Meu Carrinho</strong>
+          <strong data-testid="shopping-cart-size">{ amount }</strong>
         </Link>
         <section>
           <h2 data-testid="product-detail-name">{ proIn.title }</h2>
@@ -164,6 +165,7 @@ Product.propTypes = {
     }).isRequired,
   }).isRequired,
   addToCart: PropTypes.func.isRequired,
+  amount: PropTypes.number.isRequired,
 };
 
 export default Product;
