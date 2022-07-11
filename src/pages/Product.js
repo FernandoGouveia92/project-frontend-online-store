@@ -17,6 +17,7 @@ class Product extends React.Component {
       comment: '',
       productId: '',
       reviews: [],
+      shipp: false,
     };
   }
 
@@ -47,6 +48,7 @@ class Product extends React.Component {
     const product = await getSpecificProduct(id);
     this.setState({
       productInfo: product,
+      shipp: product.shipping.free_shipping,
     });
   }
 
@@ -74,7 +76,7 @@ class Product extends React.Component {
   }
 
   render() {
-    const { productInfo: proIn, email, comment, reviews, productId } = this.state;
+    const { productInfo: proIn, email, comment, reviews, productId, shipp } = this.state;
     const { addToCart, match: { params: { id } }, amount } = this.props;
 
     return (
@@ -94,6 +96,9 @@ class Product extends React.Component {
           <h2>{ proIn.price }</h2>
         </section>
         <img src={ proIn.thumbnail } alt={ proIn.title } />
+        {
+          shipp && <div data-testid="free-shipping">Frete Grátis</div>
+        }
         <div>
           <button
             type="button"

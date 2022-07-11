@@ -100,8 +100,10 @@ class Home extends React.Component {
               title,
               thumbnail,
               id,
+              shipping: { free_shipping: shipp },
             }, index) => (
               <ProductCard
+                shipping={ shipp }
                 image={ thumbnail }
                 title={ title }
                 price={ price }

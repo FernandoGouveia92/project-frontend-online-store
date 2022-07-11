@@ -11,6 +11,7 @@ class ProductCard extends React.Component {
       price,
       addToCart,
       id,
+      shipping,
     } = this.props;
 
     return (
@@ -31,6 +32,9 @@ class ProductCard extends React.Component {
         >
           Página do produto
         </Link>
+        {
+          shipping && <div data-testid="free-shipping">Frete Grátis!</div>
+        }
       </div>
     );
   }
@@ -42,6 +46,7 @@ ProductCard.propTypes = {
   price: PropTypes.number.isRequired,
   addToCart: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
+  shipping: PropTypes.bool.isRequired,
 };
 
 export default ProductCard;
