@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 class ShoppingCart extends React.Component {
   render() {
@@ -47,11 +48,14 @@ class ShoppingCart extends React.Component {
     );
 
     return (
-      <div>
-        { productsMyCart.length === 0
-          ? vazio
-          : product }
-      </div>
+      <>
+        <div>
+          { productsMyCart.length === 0
+            ? vazio
+            : product }
+        </div>
+        <Link to="/finalizarCompra" data-testid="checkout-products">Checkout</Link>
+      </>
     );
   }
 }

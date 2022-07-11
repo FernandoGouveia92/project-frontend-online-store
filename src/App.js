@@ -4,6 +4,7 @@ import ShoppingCart from './pages/ShoppingCart';
 import Home from './pages/Home';
 import Product from './pages/Product';
 import './App.css';
+import FinalizarCompra from './pages/FinalizarCompra';
 
 class App extends React.Component {
   constructor() {
@@ -81,6 +82,10 @@ class App extends React.Component {
               }
               { ...props }
             />) }
+          />
+          <Route
+            path="/finalizarCompra"
+            component={ FinalizarCompra }
           />
         </Switch>
       </BrowserRouter>
