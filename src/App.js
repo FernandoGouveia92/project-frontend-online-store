@@ -15,7 +15,7 @@ class App extends React.Component {
     };
   }
 
-  addOrRemoveItem = (name, titleInfo, minQuant) => {
+  addOrRemoveItem = (name, titleInfo, minQuant, maxQuant) => {
     const { productsMyCart } = this.state;
     if (name === 'less') {
       if (minQuant !== 1) {
@@ -29,7 +29,8 @@ class App extends React.Component {
           productsMyCart: newProducts,
         });
       }
-    } else {
+    } else if (name === 'more' && minQuant < maxQuant) {
+      console.log(minQuant);
       const findProduct = productsMyCart
         .find(({ title }) => title === titleInfo);
       this.setState((prev) => ({
@@ -38,11 +39,12 @@ class App extends React.Component {
     }
   }
 
-  addToCart(price, title, thumbnail) {
+  addToCart(quantity, price, title, thumbnail) {
     const data = {
       price,
       title,
       thumbnail,
+      quantity,
     };
     this.setState((prevState) => ({
       productsMyCart: [...prevState.productsMyCart, data],
@@ -61,7 +63,10 @@ class App extends React.Component {
             render={ () => (
               <Home
                 addToCart={
-                  (price, title, thumbnail) => this.addToCart(price, title, thumbnail)
+                  (quantity,
+                    price,
+                    title,
+                    thumbnail) => this.addToCart(quantity, price, title, thumbnail)
                 }
               />) }
           />
@@ -78,7 +83,10 @@ class App extends React.Component {
             path="/product/:id"
             render={ (props) => (<Product
               addToCart={
-                (price, title, thumbnail) => this.addToCart(price, title, thumbnail)
+                (price,
+                  quantity,
+                  title,
+                  thumbnail) => this.addToCart(quantity, price, title, thumbnail)
               }
               { ...props }
             />) }

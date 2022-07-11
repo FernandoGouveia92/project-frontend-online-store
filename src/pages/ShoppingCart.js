@@ -12,7 +12,7 @@ class ShoppingCart extends React.Component {
     const product = (
       formatProducts
         .map((obj) => JSON.parse(obj))
-        .map(({ price, title, thumbnail }, index) => {
+        .map(({ quantity, price, title, thumbnail }, index) => {
           const equalProd = productsMyCart.filter(({ title: info }) => info === title);
           return (
             <div key={ index }>
@@ -22,7 +22,12 @@ class ShoppingCart extends React.Component {
               <button
                 type="button"
                 data-testid="product-decrease-quantity"
-                onClick={ () => changeQuantity('less', title, equalProd.length) }
+                onClick={ () => changeQuantity(
+                  'less',
+                  title,
+                  equalProd.length,
+                  quantity,
+                ) }
               >
                 <FontAwesomeIcon icon={ faMinus } />
               </button>
@@ -30,7 +35,10 @@ class ShoppingCart extends React.Component {
               <button
                 type="button"
                 data-testid="product-increase-quantity"
-                onClick={ () => changeQuantity('more', title) }
+                onClick={ () => changeQuantity('more',
+                  title,
+                  equalProd.length,
+                  quantity) }
               >
                 <FontAwesomeIcon icon={ faPlus } />
               </button>
