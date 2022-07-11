@@ -21,7 +21,7 @@ class ShoppingCart extends React.Component {
               <button
                 type="button"
                 data-testid="product-decrease-quantity"
-                onClick={ () => changeQuantity('less', title) }
+                onClick={ () => changeQuantity('less', title, equalProd.length) }
               >
                 <FontAwesomeIcon icon={ faMinus } />
               </button>

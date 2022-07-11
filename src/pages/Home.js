@@ -11,9 +11,6 @@ class Home extends React.Component {
   constructor() {
     super();
 
-    this.handleClick = this.handleClick.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-
     this.state = {
       categoryName: '',
       productName: '',
@@ -56,7 +53,10 @@ class Home extends React.Component {
 
     return (
       <div>
-        <div data-testid="home-initial-message" className="css-input-container">
+        <div
+          data-testid="home-initial-message"
+          className="css-input-container"
+        >
           <div className="css-input-search">
             <input
               type="text"
