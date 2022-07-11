@@ -15,6 +15,22 @@ class App extends React.Component {
     };
   }
 
+  componentDidMount() {
+    const savedItems = localStorage.getItem('products');
+    if (savedItems === null) {
+      localStorage.setItem('products', JSON.stringify([]));
+    } else {
+      this.setState({
+        productsMyCart: JSON.parse(savedItems),
+      });
+    }
+  }
+
+  componentDidUpdate() {
+    const { productsMyCart } = this.state;
+    localStorage.setItem('products', JSON.stringify(productsMyCart));
+  }
+
   addOrRemoveItem = (name, titleInfo, minQuant) => {
     const { productsMyCart } = this.state;
     if (name === 'less') {
@@ -63,6 +79,7 @@ class App extends React.Component {
                 addToCart={
                   (price, title, thumbnail) => this.addToCart(price, title, thumbnail)
                 }
+                quantity={ productsMyCart.length }
               />) }
           />
           <Route
@@ -81,6 +98,7 @@ class App extends React.Component {
                 (price, title, thumbnail) => this.addToCart(price, title, thumbnail)
               }
               { ...props }
+              quantity={ productsMyCart.length }
             />) }
           />
           <Route
