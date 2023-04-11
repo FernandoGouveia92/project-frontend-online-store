@@ -57,7 +57,10 @@ class Home extends React.Component {
           data-testid="home-initial-message"
           className="css-input-container"
         >
-          <div className="css-input-search">
+          <div className="css-home-title-container">
+            <h1><a href="/" className="css-home-title">Online Store</a></h1>
+          </div>
+          <div className="css-input-search-container">
             <input
               type="text"
               data-testid="query-input"
@@ -72,7 +75,7 @@ class Home extends React.Component {
             >
               <FontAwesomeIcon icon={ faMagnifyingGlass } />
             </button>
-            <p>
+            <p className="css-underline-input-message">
               { notFind }
             </p>
           </div>

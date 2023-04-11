@@ -5,6 +5,19 @@ import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { getSpecificProduct } from '../services/api';
 import Review from '../Components/Review';
+import HomeButton from '../Components/HomeButton';
+import {
+  ProductDetailContainer,
+  Container,
+  ProductImg,
+  ProductSection,
+  AddToCartButton,
+  ProductDetailTopPage,
+  ProductSectionFormReview,
+  AddReviewButton,
+  ProductSectionForm,
+  FormTextarea,
+  ReviewEmail } from '../styles/ProductDetail/styles';
 
 class Product extends React.Component {
   constructor() {
@@ -80,37 +93,42 @@ class Product extends React.Component {
     const { addToCart, match: { params: { id } }, amount } = this.props;
 
     return (
-      <div data-testid="product">
-        <Link
-          className="css-shoppingcart"
-          to="/ShoppingCart"
-          type="button"
-          data-testid="shopping-cart-button"
-        >
-          <FontAwesomeIcon icon={ faCartShopping } />
-          <strong>Meu Carrinho</strong>
-          <strong data-testid="shopping-cart-size">{ amount }</strong>
-        </Link>
-        <section>
-          <h2 data-testid="product-detail-name">{ proIn.title }</h2>
-          <h2>{ proIn.price }</h2>
-        </section>
-        <img src={ proIn.thumbnail } alt={ proIn.title } />
-        {
-          shipp && <div data-testid="free-shipping">Frete Grátis</div>
-        }
-        <div>
-          <button
+      <Container data-testid="product">
+        <ProductDetailTopPage>
+          <HomeButton />
+          <Link
+            className="css-shoppingcart"
+            to="/ShoppingCart"
             type="button"
-            onClick={ () => addToCart('', proIn.price, proIn.title, proIn.thumbnail) }
-            data-testid="product-detail-add-to-cart"
+            data-testid="shopping-cart-button"
           >
-            Adiciona ao Carrinho
-          </button>
-        </div>
-        <section>
-          <form>
-            <label htmlFor="email">
+            <FontAwesomeIcon icon={ faCartShopping } />
+            <strong>Meu Carrinho</strong>
+            <strong data-testid="shopping-cart-size">{ amount }</strong>
+          </Link>
+        </ProductDetailTopPage>
+        <ProductDetailContainer>
+          <ProductSection>
+            <h2 data-testid="product-detail-name">{ proIn.title }</h2>
+            <h2>{ proIn.price }</h2>
+          </ProductSection>
+          <ProductImg src={ proIn.thumbnail } alt={ proIn.title } />
+          {
+            shipp && <div data-testid="free-shipping">Frete Grátis</div>
+          }
+          <div>
+            <AddToCartButton
+              type="button"
+              onClick={ () => addToCart('', proIn.price, proIn.title, proIn.thumbnail) }
+              data-testid="product-detail-add-to-cart"
+            >
+              Adiciona ao Carrinho
+            </AddToCartButton>
+          </div>
+        </ProductDetailContainer>
+        <ProductSectionForm>
+          <ProductSectionFormReview>
+            <ReviewEmail htmlFor="email">
               Email:
               <input
                 type="email"
@@ -120,7 +138,7 @@ class Product extends React.Component {
                 value={ email }
                 onChange={ this.handleChange }
               />
-            </label>
+            </ReviewEmail>
             <select onChange={ this.handleChange } name="rating">
               <option value="1" data-testid="1-rating">1</option>
               <option value="2" data-testid="2-rating">2</option>
@@ -128,7 +146,7 @@ class Product extends React.Component {
               <option value="4" data-testid="4-rating">4</option>
               <option value="5" data-testid="5-rating">5</option>
             </select>
-            <textarea
+            <FormTextarea
               placeholder="Escreva o que achou do produto aqui!"
               value={ comment }
               name="comment"
@@ -137,14 +155,14 @@ class Product extends React.Component {
               data-testid="product-detail-evaluation"
               onChange={ this.handleChange }
             />
-            <button
+            <AddReviewButton
               type="button"
               onClick={ () => this.createReview(productId) }
               data-testid="submit-review-btn"
             >
-              botão
-            </button>
-          </form>
+              Submeter Review
+            </AddReviewButton>
+          </ProductSectionFormReview>
           {
             reviews
               .filter(({ productId: getId }) => getId === id)
@@ -157,8 +175,8 @@ class Product extends React.Component {
                 />
               ))
           }
-        </section>
-      </div>
+        </ProductSectionForm>
+      </Container>
     );
   }
 }

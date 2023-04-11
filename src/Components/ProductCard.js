@@ -17,9 +17,13 @@ class ProductCard extends React.Component {
     return (
       <div className="css-product-card" data-testid="product">
         <img src={ image } alt={ title } />
-        <p>{ title }</p>
-        <p>{ price }</p>
+        <p className="css-product-title">{ title }</p>
+        <p className="css-product-price">
+          R$
+          { price }
+        </p>
         <button
+          className="css-product-addToCart"
           type="button"
           onClick={ addToCart }
           data-testid="product-add-to-cart"

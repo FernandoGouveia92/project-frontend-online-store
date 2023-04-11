@@ -1,20 +1,24 @@
 .css-input-container {
-  align-items: baseline;
   background-color: #4fb885;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  align-items: center;
+  justify-content: space-evenly;
   min-height: 75px;
   padding: 10px;
 }
 
-.css-input-search {
-  margin-right: 10px;
+.css-input-search-container {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 4px;
 }
 
-.css-input-search input {
+.css-input-search-container input {
   padding: 3px;
   width: 400px;
+
 }
 
 aside button {
@@ -27,7 +31,7 @@ aside button {
   width: 100%;
 }
 
-.css-input-search button {
+.css-input-search-container button {
   background-color: #347857;
   border: 1px solid rgb(89, 89, 89);
   border-radius: 3px;
@@ -61,6 +65,7 @@ aside button:hover {
   color: #347857;
   display: flex;
   flex-direction: column;
+  align-items: center;
   font-size: 1.2rem;
   margin-left: 10px;
   padding: 5px;
@@ -70,6 +75,10 @@ aside button:hover {
 
 .css-shoppingcart:hover {
   color: white;
+  border: black 0px solid;
+  background-color: #183829;
+  border-radius: 5px;
+
 }
 
 .principal {
@@ -92,13 +101,23 @@ article {
 .css-product-card {
   align-items: center;
   border: 1.5px solid black;
+  background-color: white;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  height: 250px;
-  margin: 2px;
+  margin: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   text-align: center;
   width: 250px;
+  gap: 7px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.css-product-card:hover {
+  transform: scale(1.07);
 }
 
 .css-product-card img {
@@ -114,4 +133,57 @@ article {
 .css-categories li {
   border-radius: 5px;
   margin-bottom: 1.5px;
+}
+
+.css-product-title {
+  font-weight:bolder;
+}
+
+.css-product-price {
+  font-weight:bolder;
+}
+
+.css-product-addToCart {
+  font-weight: bold;
+  padding: 3px;
+}
+
+.css-home-title-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.css-home-title {
+  font-weight:bolder;
+  text-decoration: none;
+  color: black;
+
+  /* background-color: #183829; */
+  /* background-color: #347857; */
+  /* background-color: #4fb885; */
+}
+
+.css-underline-input-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.css-checkout-link {
+  text-decoration: none;
+  color: black;
+  font-weight: bolder;
+  border: black solid 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 85px;
+  background-color: #347857;
+}
+
+.css-checkout-link:hover {
+  background-color: #183829;
+  color: white;
 }

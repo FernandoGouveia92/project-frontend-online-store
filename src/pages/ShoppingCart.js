@@ -3,6 +3,16 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import {
+  ProductContainer,
+  Container,
+  ProductCard,
+  ProductImg,
+  ProductText,
+  ProductPrice,
+  ProductQnt,
+  ProductQntContainer } from '../styles/shoppingCart/styles';
+import HomeButton from '../Components/HomeButton';
 
 class ShoppingCart extends React.Component {
   render() {
@@ -15,34 +25,43 @@ class ShoppingCart extends React.Component {
         .map(({ quantity, price, title, thumbnail }, index) => {
           const equalProd = productsMyCart.filter(({ title: info }) => info === title);
           return (
-            <div key={ index }>
-              <img src={ thumbnail } alt={ title } />
-              <p data-testid="shopping-cart-product-name">{ title }</p>
-              <p>{ price }</p>
-              <button
-                type="button"
-                data-testid="product-decrease-quantity"
-                onClick={ () => changeQuantity(
-                  'less',
-                  title,
-                  equalProd.length,
-                  quantity,
-                ) }
-              >
-                <FontAwesomeIcon icon={ faMinus } />
-              </button>
-              <p data-testid="shopping-cart-product-quantity">{ equalProd.length }</p>
-              <button
-                type="button"
-                data-testid="product-increase-quantity"
-                onClick={ () => changeQuantity('more',
-                  title,
-                  equalProd.length,
-                  quantity) }
-              >
-                <FontAwesomeIcon icon={ faPlus } />
-              </button>
-            </div>
+            <ProductCard key={ index }>
+              <ProductImg src={ thumbnail } alt={ title } />
+              <ProductText data-testid="shopping-cart-product-name">
+                { title }
+              </ProductText>
+              <ProductPrice>
+                R$
+                { price }
+              </ProductPrice>
+              <ProductQntContainer>
+                <button
+                  type="button"
+                  data-testid="product-decrease-quantity"
+                  onClick={ () => changeQuantity(
+                    'less',
+                    title,
+                    equalProd.length,
+                    quantity,
+                  ) }
+                >
+                  <FontAwesomeIcon icon={ faMinus } />
+                </button>
+                <ProductQnt data-testid="shopping-cart-product-quantity">
+                  { equalProd.length }
+                </ProductQnt>
+                <button
+                  type="button"
+                  data-testid="product-increase-quantity"
+                  onClick={ () => changeQuantity('more',
+                    title,
+                    equalProd.length,
+                    quantity) }
+                >
+                  <FontAwesomeIcon icon={ faPlus } />
+                </button>
+              </ProductQntContainer>
+            </ProductCard>
           );
         })
     );
@@ -56,14 +75,21 @@ class ShoppingCart extends React.Component {
     );
 
     return (
-      <>
-        <div>
+      <Container>
+        <HomeButton />
+        <ProductContainer>
           { productsMyCart.length === 0
             ? vazio
             : product }
-        </div>
-        <Link to="/finalizarCompra" data-testid="checkout-products">Checkout</Link>
-      </>
+        </ProductContainer>
+        <Link
+          to="/finalizarCompra"
+          data-testid="checkout-products"
+          className="css-checkout-link"
+        >
+          Checkout
+        </Link>
+      </Container>
     );
   }
 }
