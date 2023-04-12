@@ -52,7 +52,7 @@ class Home extends React.Component {
     const { addToCart, amount } = this.props;
 
     return (
-      <div>
+      <>
         <div
           data-testid="home-initial-message"
           className="css-input-container"
@@ -72,6 +72,7 @@ class Home extends React.Component {
               type="button"
               data-testid="query-button"
               onClick={ this.handleClick }
+              className="css-input-button"
             >
               <FontAwesomeIcon icon={ faMagnifyingGlass } />
             </button>
@@ -117,7 +118,7 @@ class Home extends React.Component {
             ))}
           </article>
         </section>
-      </div>
+      </>
     );
   }
 }

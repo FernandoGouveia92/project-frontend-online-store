@@ -10,6 +10,18 @@ const Container = styled.div`
 
 `;
 
+const ContentContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  padding: 10px;
+  width: 100%;
+  gap: 10px;
+
+  /* border: 3px solid blue; */
+`;
+
 const ProductDetailTopPage = styled.div`
   display: flex;
   justify-content: space-around;
@@ -24,7 +36,8 @@ const ProductDetailContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 80%;
+  width: 50%;
+  height: 100%;
   background-color: white;
   border-radius: 8px;
   padding: 8px;
@@ -56,47 +69,62 @@ const AddToCartButton = styled.button`
 
 const ProductSectionForm = styled.section`
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  /* align-items: center; */
   flex-direction: column;
   background-color: white;
   border-radius: 8px;
 
-  width: 65%;
+  margin-bottom: 10px;
+
+  width: 45%;
 `;
 
 const ProductSectionFormReview = styled.form`
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  /* align-items: center; */
   flex-direction: column;
   border-radius: 8px;
-  padding: 5px;
-  margin: 5px;
-  width: 60%;
+  padding: 8px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  /* width: 100%; */
   gap: 8px;
+`;
+
+const ReviewScore = styled.select`
+  display: flex;
+  width: 5%;
+  max-width: 5%;
 `;
 
 const AddReviewButton = styled.button`
   font-weight: bolder;
-  height: 30px;
+  height: 35px;
   font-size: 15px;
   padding: 4px;
+  /* margin-left: 10px; */
+  /* display: flex;
+  align-self: center; */
+
+  width: 25%;
 `;
 
 const FormTextarea = styled.textarea`
-  width: 400px;
+  width: 100%;
   height: 200px;
 `;
 
 const ReviewEmail = styled.label`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 `;
 
 export {
   ProductDetailContainer,
+  ContentContainer,
   Container,
   ProductImg,
   ProductSection,
@@ -107,4 +135,5 @@ export {
   ProductSectionForm,
   FormTextarea,
   ReviewEmail,
+  ReviewScore,
 };

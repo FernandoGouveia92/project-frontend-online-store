@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-max-depth */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -17,7 +18,8 @@ import {
   AddReviewButton,
   ProductSectionForm,
   FormTextarea,
-  ReviewEmail } from '../styles/ProductDetail/styles';
+  ReviewEmail,
+  ReviewScore } from '../styles/ProductDetail/styles';
 
 class Product extends React.Component {
   constructor() {
@@ -137,15 +139,17 @@ class Product extends React.Component {
                 data-testid="product-detail-email"
                 value={ email }
                 onChange={ this.handleChange }
+                placeholder="Insira seu email"
               />
             </ReviewEmail>
-            <select onChange={ this.handleChange } name="rating">
+            <p>Qual score você dá para esse produto?</p>
+            <ReviewScore onChange={ this.handleChange } name="rating">
               <option value="1" data-testid="1-rating">1</option>
               <option value="2" data-testid="2-rating">2</option>
               <option value="3" data-testid="3-rating">3</option>
               <option value="4" data-testid="4-rating">4</option>
               <option value="5" data-testid="5-rating">5</option>
-            </select>
+            </ReviewScore>
             <FormTextarea
               placeholder="Escreva o que achou do produto aqui!"
               value={ comment }
