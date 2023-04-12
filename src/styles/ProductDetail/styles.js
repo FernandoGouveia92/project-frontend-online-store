@@ -10,18 +10,6 @@ const Container = styled.div`
 
 `;
 
-const ContentContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  padding: 10px;
-  width: 100%;
-  gap: 10px;
-
-  /* border: 3px solid blue; */
-`;
-
 const ProductDetailTopPage = styled.div`
   display: flex;
   justify-content: space-around;
@@ -70,27 +58,26 @@ const AddToCartButton = styled.button`
 const ProductSectionForm = styled.section`
   display: flex;
   justify-content: flex-start;
-  /* align-items: center; */
   flex-direction: column;
   background-color: white;
   border-radius: 8px;
 
   margin-bottom: 10px;
 
-  width: 45%;
+  width: 98%;
 `;
 
 const ProductSectionFormReview = styled.form`
   display: flex;
   justify-content: flex-start;
-  /* align-items: center; */
   flex-direction: column;
   border-radius: 8px;
   padding: 8px;
   margin-top: 10px;
-  margin-bottom: 10px;
-  /* width: 100%; */
+  margin-bottom: 15px;
   gap: 8px;
+
+  border-bottom: 3px solid #ccc;
 `;
 
 const ReviewScore = styled.select`
@@ -104,15 +91,12 @@ const AddReviewButton = styled.button`
   height: 35px;
   font-size: 15px;
   padding: 4px;
-  /* margin-left: 10px; */
-  /* display: flex;
-  align-self: center; */
-
-  width: 25%;
+  width: 10%;
+  max-width: 10%;
 `;
 
 const FormTextarea = styled.textarea`
-  width: 100%;
+  width: 45%;
   height: 200px;
 `;
 
@@ -122,9 +106,15 @@ const ReviewEmail = styled.label`
   align-items: center;
 `;
 
+const ProductFormTitle = styled.p`
+  font-weight: bolder;
+  font-size: 20px;
+  display: flex;
+  align-self: center;
+`;
+
 export {
   ProductDetailContainer,
-  ContentContainer,
   Container,
   ProductImg,
   ProductSection,
@@ -136,4 +126,5 @@ export {
   FormTextarea,
   ReviewEmail,
   ReviewScore,
+  ProductFormTitle,
 };

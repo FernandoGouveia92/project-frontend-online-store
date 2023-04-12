@@ -19,7 +19,8 @@ import {
   ProductSectionForm,
   FormTextarea,
   ReviewEmail,
-  ReviewScore } from '../styles/ProductDetail/styles';
+  ReviewScore,
+  ProductFormTitle } from '../styles/ProductDetail/styles';
 
 class Product extends React.Component {
   constructor() {
@@ -130,6 +131,7 @@ class Product extends React.Component {
         </ProductDetailContainer>
         <ProductSectionForm>
           <ProductSectionFormReview>
+            <ProductFormTitle>O que achou desse produto?</ProductFormTitle>
             <ReviewEmail htmlFor="email">
               Email:
               <input
@@ -167,6 +169,7 @@ class Product extends React.Component {
               Submeter Review
             </AddReviewButton>
           </ProductSectionFormReview>
+          <ProductFormTitle>Reviews</ProductFormTitle>
           {
             reviews
               .filter(({ productId: getId }) => getId === id)
