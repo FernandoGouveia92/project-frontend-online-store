@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-max-depth */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -5,6 +6,21 @@ import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { getSpecificProduct } from '../services/api';
 import Review from '../Components/Review';
+import HomeButton from '../Components/HomeButton';
+import {
+  ProductDetailContainer,
+  Container,
+  ProductImg,
+  ProductSection,
+  AddToCartButton,
+  ProductDetailTopPage,
+  ProductSectionFormReview,
+  AddReviewButton,
+  ProductSectionForm,
+  FormTextarea,
+  ReviewEmail,
+  ReviewScore,
+  ProductFormTitle } from '../styles/ProductDetail/styles';
 
 class Product extends React.Component {
   constructor() {
@@ -80,37 +96,43 @@ class Product extends React.Component {
     const { addToCart, match: { params: { id } }, amount } = this.props;
 
     return (
-      <div data-testid="product">
-        <Link
-          className="css-shoppingcart"
-          to="/ShoppingCart"
-          type="button"
-          data-testid="shopping-cart-button"
-        >
-          <FontAwesomeIcon icon={ faCartShopping } />
-          <strong>Meu Carrinho</strong>
-          <strong data-testid="shopping-cart-size">{ amount }</strong>
-        </Link>
-        <section>
-          <h2 data-testid="product-detail-name">{ proIn.title }</h2>
-          <h2>{ proIn.price }</h2>
-        </section>
-        <img src={ proIn.thumbnail } alt={ proIn.title } />
-        {
-          shipp && <div data-testid="free-shipping">Frete Grátis</div>
-        }
-        <div>
-          <button
+      <Container data-testid="product">
+        <ProductDetailTopPage>
+          <HomeButton />
+          <Link
+            className="css-shoppingcart"
+            to="/ShoppingCart"
             type="button"
-            onClick={ () => addToCart('', proIn.price, proIn.title, proIn.thumbnail) }
-            data-testid="product-detail-add-to-cart"
+            data-testid="shopping-cart-button"
           >
-            Adiciona ao Carrinho
-          </button>
-        </div>
-        <section>
-          <form>
-            <label htmlFor="email">
+            <FontAwesomeIcon icon={ faCartShopping } />
+            <strong>Meu Carrinho</strong>
+            <strong data-testid="shopping-cart-size">{ amount }</strong>
+          </Link>
+        </ProductDetailTopPage>
+        <ProductDetailContainer>
+          <ProductSection>
+            <h2 data-testid="product-detail-name">{ proIn.title }</h2>
+            <h2>{ proIn.price }</h2>
+          </ProductSection>
+          <ProductImg src={ proIn.thumbnail } alt={ proIn.title } />
+          {
+            shipp && <div data-testid="free-shipping">Frete Grátis</div>
+          }
+          <div>
+            <AddToCartButton
+              type="button"
+              onClick={ () => addToCart('', proIn.price, proIn.title, proIn.thumbnail) }
+              data-testid="product-detail-add-to-cart"
+            >
+              Adiciona ao Carrinho
+            </AddToCartButton>
+          </div>
+        </ProductDetailContainer>
+        <ProductSectionForm>
+          <ProductSectionFormReview>
+            <ProductFormTitle>O que achou desse produto?</ProductFormTitle>
+            <ReviewEmail htmlFor="email">
               Email:
               <input
                 type="email"
@@ -119,16 +141,18 @@ class Product extends React.Component {
                 data-testid="product-detail-email"
                 value={ email }
                 onChange={ this.handleChange }
+                placeholder="Insira seu email"
               />
-            </label>
-            <select onChange={ this.handleChange } name="rating">
+            </ReviewEmail>
+            <p>Qual score você dá para esse produto?</p>
+            <ReviewScore onChange={ this.handleChange } name="rating">
               <option value="1" data-testid="1-rating">1</option>
               <option value="2" data-testid="2-rating">2</option>
               <option value="3" data-testid="3-rating">3</option>
               <option value="4" data-testid="4-rating">4</option>
               <option value="5" data-testid="5-rating">5</option>
-            </select>
-            <textarea
+            </ReviewScore>
+            <FormTextarea
               placeholder="Escreva o que achou do produto aqui!"
               value={ comment }
               name="comment"
@@ -137,14 +161,15 @@ class Product extends React.Component {
               data-testid="product-detail-evaluation"
               onChange={ this.handleChange }
             />
-            <button
+            <AddReviewButton
               type="button"
               onClick={ () => this.createReview(productId) }
               data-testid="submit-review-btn"
             >
-              botão
-            </button>
-          </form>
+              Submeter Review
+            </AddReviewButton>
+          </ProductSectionFormReview>
+          <ProductFormTitle>Reviews</ProductFormTitle>
           {
             reviews
               .filter(({ productId: getId }) => getId === id)
@@ -157,8 +182,8 @@ class Product extends React.Component {
                 />
               ))
           }
-        </section>
-      </div>
+        </ProductSectionForm>
+      </Container>
     );
   }
 }

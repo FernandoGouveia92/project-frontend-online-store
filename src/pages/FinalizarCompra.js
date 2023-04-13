@@ -1,60 +1,68 @@
 import React from 'react';
+import { Form,
+  FormContainer,
+  Label,
+  Input,
+  Strong,
+  Button } from '../styles/FinalizarCompra/styles';
 
 class FinalizarCompra extends React.Component {
   render() {
     return (
-      <div>
-        <form>
-          <label htmlFor="nome">
+      <FormContainer>
+        <Form>
+          <Strong>Insira seus dados:</Strong>
+          <Label htmlFor="nome">
             Nome Completo:
-            <input
+            <Input
               type="text"
               data-testid="checkout-fullname"
               id="nome"
             />
-          </label>
-          <label htmlFor="email">
+          </Label>
+          <Label htmlFor="email">
             Email:
-            <input
+            <Input
               type="email"
               data-testid="checkout-email"
               id="email"
             />
-          </label>
-          <label htmlFor="cpf">
+          </Label>
+          <Label htmlFor="cpf">
             CPF:
-            <input
+            <Input
               type="text"
               id="cpf"
               data-testid="checkout-cpf"
             />
-          </label>
-          <label htmlFor="telefone">
+          </Label>
+          <Label htmlFor="telefone">
             Telefone:
-            <input
+            <Input
               type="text"
               id="telefone"
               data-testid="checkout-phone"
             />
-          </label>
-          <label htmlFor="cep">
+          </Label>
+          <Label htmlFor="cep">
             CEP:
-            <input
+            <Input
               type="text"
               id="cep"
               data-testid="checkout-cep"
             />
-          </label>
-          <label htmlFor="endereco">
+          </Label>
+          <Label htmlFor="endereco">
             Endereço:
-            <input
+            <Input
               type="text"
               id="endereco"
               data-testid="checkout-address"
             />
-          </label>
-        </form>
-      </div>
+          </Label>
+          <Button href="/">Enviar</Button>
+        </Form>
+      </FormContainer>
     );
   }
 }
