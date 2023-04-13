@@ -31,13 +31,13 @@ Github de [Luan Victor](https://github.com/LuanVictr).
 Clone o projeto
 
 ```bash
-  git clone git@github.com:FernandoGouveia92/projecto-trivia.git
+  git clone git@github.com:FernandoGouveia92/projecto-frontend-online-store.git
 ```
 
 Entre no diretório do projeto
 
 ```bash
-  cd projecto-trivia/
+  cd projecto-frontend-online-store/
 ```
 
 Instale as dependências
