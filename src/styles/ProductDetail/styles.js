@@ -93,7 +93,6 @@ const AddReviewButton = styled.button`
   font-size: 15px;
   padding: 4px;
   width: 13%;
-  /* max-width: 10%; */
 `;
 
 const FormTextarea = styled.textarea`
