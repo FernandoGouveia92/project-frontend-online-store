@@ -72,7 +72,7 @@ const ProductSectionFormReview = styled.form`
   justify-content: flex-start;
   flex-direction: column;
   border-radius: 8px;
-  padding: 8px;
+  margin-left: 10px;
   margin-top: 10px;
   margin-bottom: 15px;
   gap: 8px;
@@ -88,11 +88,12 @@ const ReviewScore = styled.select`
 
 const AddReviewButton = styled.button`
   font-weight: bolder;
+  text-align: center;
   height: 35px;
   font-size: 15px;
   padding: 4px;
-  width: 10%;
-  max-width: 10%;
+  width: 13%;
+  /* max-width: 10%; */
 `;
 
 const FormTextarea = styled.textarea`
